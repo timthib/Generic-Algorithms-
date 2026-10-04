@@ -1,0 +1,78 @@
+{
+  "n_rows": 1200,
+  "burn_in": 200,
+  "seed": 0,
+  "ma_sign_convention": "y_t = mu + e_t + theta_1 e_{t-1} + ...",
+  "exog_parameterisation": "dynamic / transfer-function: exogenous terms enter the recursion beside the lagged y, NOT statsmodels SARIMAX's regression-with-ARMA-errors. A SARIMAX fit of these files returns different betas by construction; use ARDL or a dynamic estimator.",
+  "ar_data.csv": {
+    "model": "AR(2)",
+    "phi": [
+      0.6,
+      -0.3
+    ],
+    "c": 1.5,
+    "sigma": 1.0
+  },
+  "ma_data.csv": {
+    "model": "MA(2)",
+    "theta": [
+      0.7,
+      0.4
+    ],
+    "mu": -2.0,
+    "sigma": 1.0
+  },
+  "arma_data.csv": {
+    "model": "ARMA(1,1)",
+    "phi": [
+      0.75
+    ],
+    "theta": [
+      0.5
+    ],
+    "c": 0.4,
+    "sigma": 1.0
+  },
+  "arima_data.csv": {
+    "model": "ARIMA(1,1,1)",
+    "d": 1,
+    "phi": [
+      0.6
+    ],
+    "theta": [
+      0.3
+    ],
+    "c_on_diff": 0.2,
+    "y0": 10.0,
+    "sigma": 1.0,
+    "note": "ARMA(1,1) holds for diff(y), not y"
+  },
+  "arx_data.csv": {
+    "model": "ARX(2) with u_t and u_{t-1}",
+    "phi": [
+      0.5,
+      0.2
+    ],
+    "beta_u": 1.2,
+    "beta_u_lag1": -0.8,
+    "c": 0.3,
+    "sigma": 1.0,
+    "columns": "u, u_lag1, y"
+  },
+  "arimax_data.csv": {
+    "model": "ARIMAX(1,1,1)",
+    "d": 1,
+    "phi": [
+      0.55
+    ],
+    "theta": [
+      0.35
+    ],
+    "beta_x1": 0.9,
+    "beta_x2": -0.5,
+    "c_on_diff": 0.1,
+    "y0": 5.0,
+    "sigma": 1.0,
+    "note": "ARMA(1,1)+exog holds for diff(y)"
+  }
+}
